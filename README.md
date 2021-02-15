@@ -6,3 +6,5 @@ loop program for playing again
 input only one character at a time
 empty inputs, same characters guessed inputs.
 easy,medium,hard diffculties
+hints system
+generate words from the internet removing list 
