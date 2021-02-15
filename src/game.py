@@ -1,6 +1,8 @@
 from word import Word
 from word_generator import WordGenerator
 from hgman_graphics import hgman_graphics as hgg
+
+
 #function for clearing command line
 def clear():
     from os import system, name
@@ -55,8 +57,6 @@ class Game:
 def main():
     g = Game()
     g.game()
-
-
 
 
 if __name__ == '__main__':

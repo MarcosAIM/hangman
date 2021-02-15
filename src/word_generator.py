@@ -26,14 +26,3 @@ class WordGenerator:
 
     def pick_word(self):
         return choice(self.word_bank)
-
-
-
-def main():
-    w = WordGenerator()
-    print(w.word_bank)
-
-
-
-if __name__ == '__main__':
-    main()
