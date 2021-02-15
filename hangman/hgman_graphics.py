@@ -1,3 +1,4 @@
+# list of hangman hangman graphics
 
 hgman_graphics = (
 '''
