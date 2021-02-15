@@ -55,7 +55,7 @@ class Game:
 '''
 class Game:
     def game(self):
-        input("Welcome to Tic-Tac-Toe. Press Enter to play")
+        input("Welcome to HangMan!! Press Enter to play")
 
         #generate word
         lives = 8
