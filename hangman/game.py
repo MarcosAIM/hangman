@@ -61,19 +61,20 @@ class Game:
         lives = 8
         game_state = 0
         word_gen = WordGenerator()
+        guessed = {}
         word = Word(word_gen.pick_word())
         clear() # clear command-line
         while game_state == 0:
-            print(f'lives: {lives}') # number of lives left
-            print(hgg[-(lives+1)]) # prints hangman graphic
-            print(*word.display_word) #prints display_word
-            char = input("Guess:") # get one char input
+            self.print_game_state(lives,guessed,word)
+            char = self.get_char_input(guessed)
+            guessed[char] = 0
+            clear() # clear command-line
 
             if word.fill_display_word(char) is False: # check if guess is right
                 lives -=1 # lose one life if guess is wrong
 
             game_state = self.check_game_state(word,lives) # check win,lose,continue
-            clear() # clear command-line
+
 
         self.print_end_message(game_state,word.word) #print end game message
 
@@ -91,3 +92,18 @@ class Game:
         elif game_state == -1:
             print(hgg[8])
             print(f"Hanged!! the word is: {word}") # player losses
+
+    def print_game_state(self,lives,guessed,word):
+        print(f'lives: {lives}') # number of lives left
+        print(f'letters guessed:', *guessed.keys()) #letters guessed
+        print(hgg[-(lives+1)]) # prints hangman graphic
+        print(*word.display_word) #prints display_word
+
+    def get_char_input(self,guessed):
+        char = input("Guess:")[0] # get one char input
+        while not char.isalpha() or char in guessed:
+            if not char.isalpha():
+                char = input("Guess a letter [a-z]:")[0] # get one char input
+            else:
+                char = input(f"You Guessed {char}. Please Guess again:")[0] # get one char input
+        return char
